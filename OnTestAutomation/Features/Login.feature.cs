@@ -93,8 +93,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
 this.ScenarioSetup(scenarioInfo);
 #line 18
- testRunner.Given("I have a registered user <firstname> with username <username> and password <passw" +
-                    "ord>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have a registered user John with username john and password demo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 19
  testRunner.And("he is on the ParaBank home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20

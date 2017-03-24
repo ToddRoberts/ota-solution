@@ -6,6 +6,7 @@ using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Configuration;
 using OnTestAutomation.Helpers;
 using NUnit.Framework;
+using OnTestAutomation.Globals;
 
 namespace OnTestAutomation.StepDefinitions
 {
@@ -23,7 +24,7 @@ namespace OnTestAutomation.StepDefinitions
         {
             extentReports = new ExtentReports();
 
-            htmlReporter = new ExtentHtmlReporter(@"C:\Git\" + FeatureContext.Current.FeatureInfo.Title + ".html");
+            htmlReporter = new ExtentHtmlReporter(Constants.ReportingFolder + FeatureContext.Current.FeatureInfo.Title + ".html");
 
             htmlReporter.Configuration().Theme = Theme.Dark;
 
@@ -42,6 +43,12 @@ namespace OnTestAutomation.StepDefinitions
             driver = DriverMethods.GetDriver();
 
             ScenarioContext.Current.Set<IWebDriver>(driver);
+        }
+
+        [BeforeStep]
+        public static void LogCurrentStep()
+        {
+            ScenarioContext.Current.Get<ExtentTest>().Info(LogTraceListener.LastGherkinMessage);
         }
 
         [AfterScenario]

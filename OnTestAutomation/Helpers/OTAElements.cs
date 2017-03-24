@@ -23,7 +23,7 @@ namespace OnTestAutomation.Helpers
             catch (Exception ex) when (ex is NoSuchElementException || ex is WebDriverTimeoutException)
             {
                 ExtentTest test = ScenarioContext.Current.Get<ExtentTest>();
-                test.Error("Could not perform SendKeys on element identified by " + by.ToString() + " after " + Constants.DefaultTimeout.ToString() + " seconds");
+                test.Error("Could not perform SendKeys on element identified by " + by.ToString() + " after " + Constants.DefaultTimeout.ToString() + " seconds", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 Assert.Fail();
             }
             catch (Exception ex) when (ex is StaleElementReferenceException)
@@ -47,7 +47,7 @@ namespace OnTestAutomation.Helpers
             catch (Exception ex) when (ex is WebDriverTimeoutException || ex is NoSuchElementException)
             {
                 ExtentTest test = ScenarioContext.Current.Get<ExtentTest>();
-                test.Error("Element identified by " + by.ToString() + " not clickable after " + Constants.DefaultTimeout.ToString() + " seconds");
+                test.Error("Element identified by " + by.ToString() + " not clickable after " + Constants.DefaultTimeout.ToString() + " seconds", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 Assert.Fail();
             }
         }
@@ -63,7 +63,7 @@ namespace OnTestAutomation.Helpers
             }
             catch (Exception ex) when (ex is NoSuchElementException || ex is WebDriverTimeoutException)
             {
-                ScenarioContext.Current.Get<ExtentTest>().Error("Element identified by " + by.ToString() + " not visible after " + Constants.DefaultTimeout.ToString() + " seconds, but was expected to be visible");
+                ScenarioContext.Current.Get<ExtentTest>().Error("Element identified by " + by.ToString() + " not visible after " + Constants.DefaultTimeout.ToString() + " seconds, but was expected to be visible", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 return false;
             }
             return true;
@@ -101,7 +101,7 @@ namespace OnTestAutomation.Helpers
             catch (Exception ex) when (ex is NoSuchElementException || ex is WebDriverTimeoutException)
             {
                 ExtentTest test = ScenarioContext.Current.Get<ExtentTest>();
-                test.Error("Could not perform GetElementText on element identified by " + by.ToString() + " after " + Constants.DefaultTimeout.ToString() + " seconds");
+                test.Error("Could not perform GetElementText on element identified by " + by.ToString() + " after " + Constants.DefaultTimeout.ToString() + " seconds", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 Assert.Fail();
             }
 

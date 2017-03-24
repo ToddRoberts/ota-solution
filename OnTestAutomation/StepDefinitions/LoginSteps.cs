@@ -4,12 +4,15 @@ using OnTestAutomation.DataEntities;
 using OnTestAutomation.Pages;
 using OnTestAutomation.Helpers;
 using AventStack.ExtentReports;
+using OpenQA.Selenium;
 
 namespace OnTestAutomation.StepDefinitions
 {
     [Binding]
     public class LoginSteps
     {
+        private IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>();
+
         private ExtentTest test = ScenarioContext.Current.Get<ExtentTest>();
 
         [Given(@"I have a registered user (.*) with username (.*) and password (.*)")]
@@ -57,13 +60,13 @@ namespace OnTestAutomation.StepDefinitions
         [Then(@"he should land on the Accounts Overview page")]
         public void ThenHeShouldLandOnTheAccountsOverviewPage()
         {
-            OTAAssert.AssertTrue(test, new AccountsOverviewPage().Load().IsAt(), "User landed on the Accounts Overview page after a successful login");
+            OTAAssert.AssertTrue(driver, test, new AccountsOverviewPage().Load().IsAt(), "User landed on the Accounts Overview page after a successful login");
         }
 
         [Then(@"he should see an error message stating that the login request was denied")]
         public void ThenHeShouldSeeAnErrorMessageStatingThatTheLoginRequestWasDenied()
         {
-            OTAAssert.AssertEquals(test, new LoginErrorPage().Load().GetErrorMessage(), "The username and password could not be verified.", "Error message indicating an unsuccessful login is displayed");
+            OTAAssert.AssertEquals(driver, test, new LoginErrorPage().Load().GetErrorMessage(), "The username and password could not be verified.", "Error message indicating an unsuccessful login is displayed");
         }
     }
 }

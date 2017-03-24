@@ -81,9 +81,11 @@
     </Compile>
     <Compile Include="Globals\Constants.cs" />
     <Compile Include="Helpers\DriverMethods.cs" />
+    <Compile Include="Helpers\LogTraceListener.cs" />
     <Compile Include="Helpers\OTAAssert.cs" />
     <Compile Include="Helpers\OTAElements.cs" />
     <Compile Include="Helpers\OTALoadableComponent.cs" />
+    <Compile Include="Helpers\ReportingMethods.cs" />
     <Compile Include="Pages\LoginErrorPage.cs" />
     <Compile Include="Pages\AccountsOverviewPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />

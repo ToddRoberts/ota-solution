@@ -99,7 +99,7 @@ namespace OnTestAutomation.Helpers
             {
                 ExtentTest test = ScenarioContext.Current.Get<ExtentTest>();
                 IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>();
-                test.Error("LoadableComponentException caught during page load: " + this.UnableToLoadMessage);
+                test.Error("LoadableComponentException caught during page load: " + this.UnableToLoadMessage, MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 throw new LoadableComponentException(this.UnableToLoadMessage);
             }
 

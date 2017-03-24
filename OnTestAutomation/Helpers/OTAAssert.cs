@@ -1,13 +1,13 @@
 ﻿using System;
 using AventStack.ExtentReports;
 using NUnit.Framework;
-using TechTalk.SpecFlow;
+using OpenQA.Selenium;
 
 namespace OnTestAutomation.Helpers
 {
     public class OTAAssert
     {
-        public static void AssertTrue(ExtentTest extentTest, bool assertedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
+        public static void AssertTrue(IWebDriver driver, ExtentTest extentTest, bool assertedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
         {
             try
             {
@@ -16,12 +16,12 @@ namespace OnTestAutomation.Helpers
             }
             catch (AssertionException)
             {
-                extentTest.Fail("Failure occurred when executing check '" + reportingMessage + "'");
+                extentTest.Fail("Failure occurred when executing check '" + reportingMessage + "'", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 throw;
             }
         }
 
-        public static void AssertEquals(ExtentTest extentTest, string actualValue, string expectedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
+        public static void AssertEquals(IWebDriver driver, ExtentTest extentTest, string actualValue, string expectedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace OnTestAutomation.Helpers
             }
             catch (AssertionException)
             {
-                extentTest.Fail("Failure occurred when executing check '" + reportingMessage + "'");
+                extentTest.Fail("Failure occurred when executing check '" + reportingMessage + "'", MediaEntityBuilder.CreateScreenCaptureFromPath(ReportingMethods.CreateScreenshot(driver)).Build());
                 throw;
             }
         }

@@ -15,7 +15,7 @@ Scenario Outline: Login using valid credentials
 #	| Alex      | alex     | demo     |
 
 Scenario:  Login using incorrect password
-	Given I have a registered user <firstname> with username <username> and password <password>
+	Given I have a registered user John with username john and password demo
 	And he is on the ParaBank home page
 	When he logs in using an invalid password
 	Then he should see an error message stating that the login request was denied
