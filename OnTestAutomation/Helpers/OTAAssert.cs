@@ -7,7 +7,7 @@ namespace OnTestAutomation.Helpers
 {
     public class OTAAssert
     {
-        public static void AssertTrue(IWebDriver driver, ExtentTest extentTest, bool assertedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
+        public static void AssertTrue(IWebDriver driver, ExtentTest extentTest, bool assertedValue, string reportingMessage)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace OnTestAutomation.Helpers
             }
         }
 
-        public static void AssertEquals(IWebDriver driver, ExtentTest extentTest, string actualValue, string expectedValue, string reportingMessage, bool optionalCreateScreenshotIfSuccessful = false)
+        public static void AssertEquals(IWebDriver driver, ExtentTest extentTest, string actualValue, string expectedValue, string reportingMessage)
         {
             try
             {
