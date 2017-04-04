@@ -3,6 +3,7 @@
 	As a registered ParaBank user
 	I want to be able to log in
 
+@browser
 Scenario Outline: Login using valid credentials
 	Given I have a registered user <firstname> with username <username> and password <password>
 	And he is on the ParaBank home page
@@ -12,8 +13,9 @@ Scenario Outline: Login using valid credentials
 	| firstname | username | password |
 	| John      | john     | demo     |
 	| Bob       | parasoft | demo     |
-#	| Alex      | alex     | demo     |
+	| Alex      | alex     | demo     |
 
+@browser
 Scenario:  Login using incorrect password
 	Given I have a registered user John with username john and password demo
 	And he is on the ParaBank home page

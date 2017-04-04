@@ -66,20 +66,28 @@ namespace OnTestAutomation.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login using valid credentials")]
+        [NUnit.Framework.CategoryAttribute("browser")]
         [NUnit.Framework.TestCaseAttribute("John", "john", "demo", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Bob", "parasoft", "demo", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Alex", "alex", "demo", new string[0])]
         public virtual void LoginUsingValidCredentials(string firstname, string username, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login using valid credentials", exampleTags);
-#line 6
-this.ScenarioSetup(scenarioInfo);
+            string[] @__tags = new string[] {
+                    "browser"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login using valid credentials", @__tags);
 #line 7
- testRunner.Given(string.Format("I have a registered user {0} with username {1} and password {2}", firstname, username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.And("he is on the ParaBank home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have a registered user {0} with username {1} and password {2}", firstname, username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.When("he logs in using his credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("he is on the ParaBank home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
+ testRunner.When("he logs in using his credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
  testRunner.Then("he should land on the Accounts Overview page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -87,18 +95,20 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login using incorrect password")]
+        [NUnit.Framework.CategoryAttribute("browser")]
         public virtual void LoginUsingIncorrectPassword()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login using incorrect password", ((string[])(null)));
-#line 17
-this.ScenarioSetup(scenarioInfo);
-#line 18
- testRunner.Given("I have a registered user John with username john and password demo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login using incorrect password", new string[] {
+                        "browser"});
 #line 19
- testRunner.And("he is on the ParaBank home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.When("he logs in using an invalid password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a registered user John with username john and password demo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 21
+ testRunner.And("he is on the ParaBank home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.When("he logs in using an invalid password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
  testRunner.Then("he should see an error message stating that the login request was denied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

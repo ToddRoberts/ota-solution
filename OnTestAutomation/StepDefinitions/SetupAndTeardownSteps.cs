@@ -34,12 +34,16 @@ namespace OnTestAutomation.StepDefinitions
         }
 
         [BeforeScenario]
-        public static void InitializeDriver()
+        public static void InitializeReportTest()
         {
             extentTest = FeatureContext.Current.Get<ExtentReports>().CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
 
             ScenarioContext.Current.Set<ExtentTest>(extentTest);
+        }
 
+        [BeforeScenario("browser")]
+        public static void InitializeDriver()
+        {
             driver = DriverMethods.GetDriver();
 
             ScenarioContext.Current.Set<IWebDriver>(driver);
@@ -52,10 +56,8 @@ namespace OnTestAutomation.StepDefinitions
         }
 
         [AfterScenario]
-        public static void CloseDriver()
+        public static void WrapUpReport()
         {
-            driver.Quit();
-
             switch (TestContext.CurrentContext.Result.Outcome.Status.ToString().ToLower())
             {
                 case "passed":
@@ -76,6 +78,12 @@ namespace OnTestAutomation.StepDefinitions
             }
 
             ScenarioContext.Current.Clear();
+        }
+
+        [AfterScenario("browser")]
+        public static void CloseBrowser()
+        {
+            driver.Quit();
         }
 
         [AfterFeature]
