@@ -22,7 +22,7 @@ namespace RestSharpOnTestAutomation.StepDefinitions
         [Given(@"I want to know the number of Formula One races in (.*)")]
         public void GivenIWantToKnowTheNumberOfFormulaOneRacesIn(string season)
         {
-            restClient = new RestClient(Constants.ApiBaseUrl);
+            restClient = new RestClient(Constants.ApiBaseUrl); //http://ergast.com/api/f1
 
             restRequest = new RestRequest("{season}/circuits.json", Method.GET);
 
